@@ -22,7 +22,7 @@ export const NavBar = () => {
     
   }
   return (
-      <div className="navbar bg-neutral shadow-sm">
+      <div className="navbar  bg-[#000] text-white shadow-sm">
   <div className="flex-1">
     <Link to={user ? "/" : "/login"} className="btn btn-ghost text-xl bg-neutral-content text-neutral ml-4">DevTinder</Link>
   </div>
@@ -48,7 +48,7 @@ export const NavBar = () => {
               {/* <span className="badge">New</span> */}
             </Link>
           </li>
-          <li><a>Settings</a></li>
+          <li><Link to={"/connections"}>Connections</Link></li>
           <li><a onClick={handleLogout}>Logout</a></li>
         </ul>
       </div>
