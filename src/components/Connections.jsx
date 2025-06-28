@@ -14,7 +14,7 @@ const Connections = () => {
         withCredentials: true,
       });
       dispatch(addConnection(res?.data?.data));
-    } catch (err) {
+    } catch (err){
       console.error("Error fetching connections:", err);
     }
   };
@@ -54,7 +54,7 @@ const Connections = () => {
                 <div className="text-sm opacity-70">
                   {user.about || " "}
                 </div>
-                <div className="text-sm opacity-70">
+                <div className="text-xs opacity-70">
                   {user.skills && user.skills.length > 0
                     ? user.skills.map((skill, index) => (
                         <span key={index} className="mr-2 py-1">
