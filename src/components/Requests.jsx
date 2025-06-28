@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import BASE_URL from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../utils/requestSlice";
+import { addRequest, removeRequest } from "../utils/requestSlice";
 import axios from "axios";
 
 const Requests = () => {
   const requests = useSelector((store) => store.requests);
   const dispatch = useDispatch();
+
+  const reviewRequests = async(status, _id) => {
+    const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, {withCredentials : true});
+    dispatch(removeRequest(_id));
+  }
+
   const fetchRequests = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/requests", {
@@ -28,7 +34,7 @@ const Requests = () => {
     <div>
       <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide">
         <h1 className="text-2xl font-bold mb-6">Requests</h1>
-        <ul className="bg-[#111] rounded-box shadow-md w-full max-w-3xl">
+        <ul className="bg-[#000] rounded-box shadow-md w-full max-w-3xl">
           {requests.map((request) => {
             const {
               firstName,
@@ -43,7 +49,7 @@ const Requests = () => {
             return (
               <li
                 key={_id}
-                className="list-row border-b border-base-200 p-4 hover:bg-neutral-900 transition h-36 pl-10 pt-8"
+                className="list-row border-b border-base-200 p-4 hover:bg-neutral-950 transition h-36 pl-10 pt-8"
               >
                 <div>
                   <div className="flex items-center gap-4">
@@ -58,7 +64,7 @@ const Requests = () => {
                           {firstName} {lastName}
                         </div>
                         <div className="text-xs text-right text-gray-500 mt-1.5">
-                          {age} . {gender}
+                          {age} • {gender}
                         </div>
                       </div>
                       <div className="text-sm opacity-70">{about || " "}</div>
@@ -73,10 +79,12 @@ const Requests = () => {
                       </div>
                     </div>
                     <div className="flex justify-end items-center">
-                      <button className="btn btn-neutral-content text-red-500 hover:bg-red-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95 mx-2">
+                      <button className="btn btn-neutral-content text-red-500 hover:bg-red-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95 mx-2"
+                      onClick={()=>reviewRequests("rejected",request._id)}>
                         Reject
                       </button>
-                      <button className="btn btn-neutral-content text-blue-500 hover:bg-blue-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95">
+                      <button className="btn btn-neutral-content text-blue-500 hover:bg-blue-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95"
+                       onClick={()=>reviewRequests("accepted",request._id)}>
                         Accept
                       </button>
                     </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import BASE_URL from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
+import UserCard from "./UserCard";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
@@ -30,11 +31,11 @@ const Connections = () => {
   return (
     <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide">
       <h1 className="text-2xl font-bold mb-6">Connections</h1>
-      <ul className="bg-[#111] rounded-box shadow-md w-full max-w-3xl">
+      <ul className="bg-[#000] rounded-box shadow-md w-full max-w-3xl">
         {connections.map((user) => (
           <li
             key={user._id}
-            className="list-row border-b border-base-200 p-4 hover:bg-neutral-900 transition h-36 pl-10 pt-8"
+            className="list-row border-b border-base-200 p-4 hover:bg-neutral-950 transition h-36 pl-10 pt-8"
           >
             <div className="flex items-center gap-4">
               <img

@@ -65,7 +65,7 @@ export const InputField = ({value, onChange}) => {
   return(
     <>
     <label className="input mb-7">
-  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  {/* <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       strokeLinejoin="round"
       strokeLinecap="round"
@@ -76,10 +76,10 @@ export const InputField = ({value, onChange}) => {
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
       <circle cx="12" cy="7" r="4"></circle>
     </g>
-  </svg>
+  </svg> */}
   <input
     type="email" 
-    placeholder="Email ID" 
+    placeholder="" 
     required
     value={value}
     onChange={onChange}
@@ -93,7 +93,7 @@ export const PassWordField = ({value, onChange}) => {
   return(
     <>
     <label className="input">
-  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  {/* <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       strokeLinejoin="round"
       strokeLinecap="round"
@@ -106,11 +106,11 @@ export const PassWordField = ({value, onChange}) => {
       ></path>
       <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
     </g>
-  </svg>
+  </svg> */}
   <input
     type="password"
     required
-    placeholder="Password"
+    placeholder=""
     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
     title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
     value={value}

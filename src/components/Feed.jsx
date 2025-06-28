@@ -23,6 +23,11 @@ const Feed = () => {
     getFeed();
   },[]);
 
+  if(!feed) return;
+  if(feed.length == 0){
+    return <div>No more users found</div>
+  }
+
 
   return (
     feed && (
