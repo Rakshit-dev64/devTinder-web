@@ -7,16 +7,18 @@ import store from "./utils/store";
 import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import Signup from "./components/Signup";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#121212] text-white">
+    <div className="min-h-screen bg-[#000000] text-white">
       <Provider store = {store}>
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body />}>
               <Route index element={<Feed />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup/>} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />

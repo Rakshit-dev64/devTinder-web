@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { InputField, PassWordField } from './components'
+import { InputField } from './components'
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BASE_URL from '../utils/constants';
+import art from '../assets/art.png';
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("rakshit@gmail.com");
-  const [password, setPassword] = useState("Rakshit@998");
+  const [emailId, setEmailId] = useState("@gmail.com");
+  const [password, setPassword] = useState("@998");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,22 +26,52 @@ const Login = () => {
     console.log(error);
     }
 }
-
-  return (
-   <div className='flex justify-center mt-32 card-xl'>
-    <div className="card bg-neutral w-96 shadow-sm">
-  <div className="card-body">
-    <h2 className="card-title justify-center mb-5">Login</h2>
-    <InputField value={emailId} onChange={(e)=>{setEmailId(e.target.value)}}/>
-    <PassWordField value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-    <p className='text-red-500 text-sm mt-1 mb-1 min-h-[1.25rem]'>{error}</p>
-    <div className="card-actions justify-center">
-      <button className="btn btn-primary" onClick={handleLogin}>Login</button>
+return(
+ <div className=" bg-black flex px-16 gap-x-48">
+  <div className="max-w-md  text-white pt-40 pl-32">
+    <h1 className="text-5xl font-bold mb-8">Login to your account</h1>
+    <div className="card bg-black shadow-none">
+      <div className="card-body p-0">
+        <fieldset className="space-y-4">
+          <div>
+            <InputField
+              value={emailId}
+              onChange={(e) => setEmailId(e.target.value)}
+              placeholder={"Email Id"}
+              type={"email"}
+            />
+          </div>
+          <div>
+            <InputField
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={"Password"}
+              type={"password"}
+            />
+          </div>
+          <div>
+            <a className="link link-hover text-sm text-gray-400">Forgot password?</a>
+          </div>
+          <button className="mt-4 w-80 btn btn-ghost text-xl bg-neutral-content text-neutral" onClick={handleLogin}>Login</button>
+          <div className="mt-2">
+  <span className="text-sm text-gray-400">
+    New user?{" "}
+    <Link to={"/signup"} className="text-blue-400 underline hover:text-blue-500">
+      Sign up here
+    </Link>
+  </span>
+</div>
+        </fieldset>
+      </div>
     </div>
   </div>
+  <div className="flex items-center justify-center">
+  <img src={art} alt="Login Illustration" className="block h-[100%]" />
 </div>
-   </div>
-  )
+
+</div>
+
+)
 }
 
 export default Login

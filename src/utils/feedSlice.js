@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import reducer from "./userSlice";
 
 const feedSlice = createSlice({
     name : "feed",
@@ -9,11 +8,12 @@ const feedSlice = createSlice({
             return action.payload;
         }, 
         removeUserFromFeed : (state, action) => {
-            const newFeed = state.filter((r)=> r._id != action.payload) // r is every user in my feed and this filter function will remove the user that has id equals to the id provided in action.payload
+            const newFeed = state.filter((r)=> r._id != action.payload) // r is every user in my feed and this filter function will keep all the users whose id is not equal to action.payload
             return newFeed;
-        }
+        },
+        resetFeed : () => null
     }
 })
 
-export const {addFeed, removeUserFromFeed} = feedSlice.actions;
+export const {addFeed, removeUserFromFeed, resetFeed} = feedSlice.actions;
 export default feedSlice.reducer;

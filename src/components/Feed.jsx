@@ -7,11 +7,11 @@ import UserCard from './UserCard';
 
 const Feed = () => {
   const feed = useSelector((store)=>store.feed);
+  // const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const getFeed = async() => {
     if (feed) return;
-
     try{
       const res = await axios.get(BASE_URL + "/user/feed", {withCredentials : true});
       dispatch(addFeed(res.data));
@@ -23,7 +23,7 @@ const Feed = () => {
     getFeed();
   },[]);
 
-  if(!feed) return;
+  if(feed == null) return;
   if(feed.length == 0){
     return <div>No more users found</div>
   }
