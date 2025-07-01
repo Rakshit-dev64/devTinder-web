@@ -3,6 +3,7 @@ import BASE_URL from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequest, removeRequest } from "../utils/requestSlice";
 import axios from "axios";
+import { RequestsImg } from "./Illustrations";
 
 const Requests = () => {
   const requests = useSelector((store) => store.requests);
@@ -28,8 +29,17 @@ const Requests = () => {
   }, []);
 
   if (!requests) return null;
-  if (requests.length === 0)
-    return <h1 className="text-center mt-6 text-lg">No requests found</h1>;
+  if(requests.length == 0){
+    return(
+       <div className='flex justify-center items-center flex-col mt-14 gap-28'>
+      <h1 className="text-4xl font-bold">No requests found</h1>
+      <div>
+        <RequestsImg/>
+      </div>
+  
+    </div>
+    )
+  } 
   return (
     <div>
       <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide">

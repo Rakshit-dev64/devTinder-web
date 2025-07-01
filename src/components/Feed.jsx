@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addFeed } from '../utils/feedSlice';
 import axios from 'axios';
 import UserCard from './UserCard';
+import { TouchGrass } from './Illustrations';
 
 const Feed = () => {
   const feed = useSelector((store)=>store.feed);
@@ -25,8 +26,17 @@ const Feed = () => {
 
   if(feed == null) return;
   if(feed.length == 0){
-    return <div>No more users found</div>
+    return (
+    <div className='flex justify-center items-center flex-col mt-48 gap-14'>
+      <div className='text-4xl font-bold'>No more users found</div>
+      <div>
+        <TouchGrass/>
+      </div>
+
+    </div>
+    )
   }
+
 
 
   return (

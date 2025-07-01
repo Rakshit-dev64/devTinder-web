@@ -4,6 +4,7 @@ import BASE_URL from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
 import UserCard from "./UserCard";
+import { UFO } from "./Illustrations";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
@@ -26,8 +27,15 @@ const Connections = () => {
 
   if (!connections) return null;
   if (connections.length === 0)
-    return <h1 className="text-center mt-6 text-lg">No connections found</h1>;
-
+    return (
+  <div className='flex justify-center items-center flex-col mt-14 gap-14'>
+    <h1 className="text-4xl font-bold">No connections found</h1>
+    <div>
+      <UFO/>
+    </div>
+  </div>
+  
+    )
   return (
     <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide">
       <h1 className="text-2xl font-bold mb-6">Connections</h1>

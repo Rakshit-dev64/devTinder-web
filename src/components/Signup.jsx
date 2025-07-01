@@ -27,7 +27,10 @@ const Signup = () => {
   }
   catch(err){
     setError(err.response?.data || "Something went wrong");
-    console.log(error);
+    console.log(err.response.data)
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
     }
 }
   return (
@@ -84,7 +87,11 @@ const Signup = () => {
      <div className="flex items-center justify-center">
      <img src={art} alt="Login Illustration" className="block h-[100%]" />
    </div>
-   
+   <div className="toast toast-top toast-center">
+        {error && <div className="alert alert-error">
+          <span>{error}</span>
+        </div>}
+      </div>
    </div>
   )
 }

@@ -26,7 +26,7 @@ export const NavBar = () => {
   return (
       <div className="navbar  bg-[#000] text-white shadow-sm">
   <div className="flex-1">
-    <Link to={user ? "/" : "/login"} className="btn btn-ghost text-xl bg-neutral-content text-neutral ml-4">CodeBond</Link>
+    <Link to={user ? "/" : "/login"} className="btn btn-ghost text-xl bg-neutral-content text-neutral ml-4">DevLink</Link>
   </div>
   <div className="flex gap-2 items-center">
   {user && (          
@@ -66,7 +66,7 @@ export const NavBar = () => {
 export const InputField = ({value, onChange, placeholder, type}) => {
   return(
     <>
-    <label className="input mb-7">
+    <label className="input mt-5">
   {/* <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       strokeLinejoin="round"
