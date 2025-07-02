@@ -11,7 +11,7 @@ import Signup from "./components/Signup";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#000000] text-white">
+    <div className="min-h-screen bg-[#121212] text-white">
       <Provider store = {store}>
         <BrowserRouter basename="/">
           <Routes>
