@@ -8,8 +8,8 @@ import BASE_URL from "../utils/constants";
 import art from "../assets/art.png";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("@gmail.com");
-  const [password, setPassword] = useState("@998");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
