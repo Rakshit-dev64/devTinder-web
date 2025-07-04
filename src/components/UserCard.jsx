@@ -9,12 +9,16 @@ const UserCard = ({ user }) => {
   const dispatch = useDispatch();
   const [showFullAbout, setShowFullAbout] = useState(false);
   const sendRequest = async (status, _id) => {
+    try{
     const res = await axios.post(
-      BASE_URL + "/request/send/" + status + "/" + _id,
-      {},
-      { withCredentials: true }
-    );
-    dispatch(removeUserFromFeed(_id));
+        BASE_URL + "/request/send/" + status + "/" + _id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeUserFromFeed(_id));
+      } catch(err){
+        console.error(err);
+      }
   };
   const MAX_LENGTH = 100;
   const displayedAbout =

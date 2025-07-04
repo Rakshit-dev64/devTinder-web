@@ -45,17 +45,17 @@ const Requests = () => {
       <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide">
         <h1 className="text-2xl font-bold mb-6">Requests</h1>
         <ul className="bg-[#000] rounded-box shadow-md w-full max-w-3xl">
-          {requests.map((request) => {
+          { requests.map((request) => {
             const {
-              firstName,
-              lastName,
-              profileURL,
-              age,
-              gender,
-              about,
-              skills,
-              _id,
-            } = request.fromUserId;
+              firstName = "",
+              lastName = "",
+              profileURL = "",
+              age = "",
+              gender = "",
+              about = "",
+              skills = [],
+              _id = ""
+            } = request.fromUserId || {};
             return (
               <li
                 key={_id}
