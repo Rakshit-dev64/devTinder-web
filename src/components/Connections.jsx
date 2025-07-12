@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
 import UserCard from "./UserCard";
 import { UFO } from "./Illustrations";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
@@ -16,7 +17,7 @@ const Connections = () => {
         withCredentials: true,
       });
       dispatch(addConnection(res?.data?.data));
-    } catch (err){
+    } catch (err) {
       console.error("Error fetching connections:", err);
     }
   };
@@ -28,14 +29,13 @@ const Connections = () => {
   if (!connections) return null;
   if (connections.length === 0)
     return (
-  <div className='flex justify-center items-center flex-col mt-14 gap-14'>
-    <h1 className="text-4xl font-bold">No connections found</h1>
-    <div>
-      <UFO/>
-    </div>
-  </div>
-  
-    )
+      <div className="flex justify-center items-center flex-col mt-14 gap-14">
+        <h1 className="text-4xl font-bold">No connections found</h1>
+        <div>
+          <UFO />
+        </div>
+      </div>
+    );
   return (
     <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide">
       <h1 className="text-2xl font-bold mb-6">Connections</h1>
@@ -60,9 +60,7 @@ const Connections = () => {
                     {user.age} • {user.gender}
                   </div>
                 </div>
-                <div className="text-sm opacity-70">
-                  {user.about || " "}
-                </div>
+                <div className="text-sm opacity-70">{user.about || " "}</div>
                 <div className="text-xs opacity-70">
                   {user.skills && user.skills.length > 0
                     ? user.skills.map((skill, index) => (
@@ -73,6 +71,11 @@ const Connections = () => {
                     : " "}
                 </div>
               </div>
+              <Link to={"/chat/" + user._id}>
+                <button className="btn btn-neutral-content text-green-500 hover:bg-green-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95 mr-6">
+                  Message
+                </button>
+              </Link>
             </div>
           </li>
         ))}

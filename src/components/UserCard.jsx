@@ -5,36 +5,39 @@ import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
 
 const UserCard = ({ user }) => {
+  if (!user) return;
   const { _id, firstName, lastName, about, profileURL, age, gender, skills } = user;
   const dispatch = useDispatch();
   const [showFullAbout, setShowFullAbout] = useState(false);
   const sendRequest = async (status, _id) => {
-    try{
-    const res = await axios.post(
+    try {
+      const res = await axios.post(
         BASE_URL + "/request/send/" + status + "/" + _id,
         {},
         { withCredentials: true }
       );
       dispatch(removeUserFromFeed(_id));
-      } catch(err){
-        console.error(err);
-      }
+    } catch (err) {
+      console.error(err);
+    }
   };
   const MAX_LENGTH = 100;
   const displayedAbout =
-    showFullAbout || about.length <= MAX_LENGTH
+    about && (showFullAbout || about.length <= MAX_LENGTH)
       ? about
-      : about.slice(0, MAX_LENGTH) + "...";
+      : about
+      ? about.slice(0, MAX_LENGTH) + "..."
+      : "";
 
   return (
     user && (
-      <div className="relative w-96 h-[600px] rounded-xl overflow-hidden shadow-lg">
+      <div className="relative w-96 h-[600px] rounded-xl overflow-hidden shadow-2xl shadow-black">
         <img
           src={profileURL}
           alt="pfp"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent "></div>
 
         <div className="absolute bottom-0 text-white px-4 pb-5 w-full">
           <h2 className="text-2xl font-bold flex items-baseline gap-2">
@@ -45,7 +48,7 @@ const UserCard = ({ user }) => {
           </h2>
           <p className="text-sm mt-1">
             {displayedAbout}
-            {about.length > MAX_LENGTH && (
+            {about && about.length > MAX_LENGTH && (
               <button
                 onClick={() => setShowFullAbout(!showFullAbout)}
                 className="text-gray-200 underline text-xs"

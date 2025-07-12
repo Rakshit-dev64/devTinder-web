@@ -6,6 +6,7 @@ import { addUser } from "../utils/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import BASE_URL from "../utils/constants";
 import art from "../assets/art.png";
+import teamWork from '../assets/teamWork.svg'
 
 const Login = () => {
   const [emailId, setEmailId] = useState("");
@@ -54,9 +55,9 @@ const Login = () => {
                 />
               </div>
               <div>
-                <a className="link link-hover text-sm text-gray-400 ">
+                <Link to="/password/reset" className="link link-hover text-sm text-gray-400 ">
                   Forgot password?
-                </a>
+                </Link>
               </div>
               <button
                 className="mt-4 w-80 btn btn-ghost text-xl bg-neutral-content text-neutral"

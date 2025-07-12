@@ -1,26 +1,25 @@
-import React from 'react'
-import touchingGrass from '../assets/touchingGrass.svg'
-import ufo from '../assets/ufo.svg'
+import noUsersFound from '../assets/noUsersFound.svg'
+import teamWork from '../assets/teamWork.svg'
 import requests from '../assets/requests.svg'
 
 export const TouchGrass = () => {
   return (
-    <div className='w-88'>
-        <img src={touchingGrass} />
+    <div className='w-lg'>
+        <img src={noUsersFound} />
     </div>
   )
 }
 
 export const UFO = () => {
   return (
-    <div className='w-88'>
-        <img src={ufo} />
+    <div className='w-lg'>
+        <img src={teamWork} />
     </div>
   )
 }
 export const RequestsImg = () => {
   return (
-    <div className='w-88'>
+    <div className='w-lg'>
         <img src={requests} />
     </div>
   )

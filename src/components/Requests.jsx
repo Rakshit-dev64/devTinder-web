@@ -31,8 +31,8 @@ const Requests = () => {
   if (!requests) return null;
   if(requests.length == 0){
     return(
-       <div className='flex justify-center items-center flex-col mt-14 gap-28'>
-      <h1 className="text-4xl font-bold">No requests found</h1>
+       <div className='flex justify-center items-center flex-col mt-14 gap-14'>
+      <h1 className="text-4xl font-bold font-">No requests found</h1>
       <div>
         <RequestsImg/>
       </div>

@@ -27,7 +27,7 @@ const Feed = () => {
   if(feed == null) return;
   if(feed.length == 0){
     return (
-    <div className='flex justify-center items-center flex-col mt-48 gap-14'>
+    <div className='flex justify-center items-center flex-col mt-14 gap-14'>
       <div className='text-4xl font-bold'>No more users found</div>
       <div>
         <TouchGrass/>
