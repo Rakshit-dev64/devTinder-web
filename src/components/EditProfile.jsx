@@ -13,34 +13,51 @@ const EditProfile = ({ user }) => {
   const [age, setAge] = useState(user.age);
   const [profileURL, setprofileURL] = useState(user.profileURL);
   const [gender, setGender] = useState(user.gender);
+  const [skills, setSkills] = useState(
+    user.skills ? user.skills.join(", ") : ""
+  );
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
 
   const saveProfile = async () => {
     try {
+      // Convert skills string to array
+      const skillsArray = skills
+        .split(",")
+        .map((skill) => skill.trim())
+        .filter((skill) => skill.length > 0);
+
       const res = await axios.patch(
         BASE_URL + "/profile/edit",
-        { firstName, lastName, about, age, profileURL, gender },
+        {
+          firstName,
+          lastName,
+          about,
+          age,
+          profileURL,
+          gender,
+          skills: skillsArray,
+        },
         { withCredentials: true }
       );
       dispatch(addUser(res?.data));
       setShowToast(true);
       setTimeout(() => {
-        setShowToast(false)
-      },5000)
+        setShowToast(false);
+      }, 5000);
     } catch (err) {
       setError(err?.response?.data);
-      setTimeout(()=>{
+      setTimeout(() => {
         setError(false);
-      },5000)
+      }, 5000);
     }
   };
 
   return (
-    <div className="flex justify-center gap-8 mt-2 ">
-      <div className="flex justify-center card-xl bg-[#000]">
-        <div className="card bg-neutral w-md shadow-sm">
+    <div className="flex justify-center gap-8 mt-8 mb-20 animate-fadeIn">
+      <div className="flex justify-center card-xl">
+        <div className="card card-modern w-md shadow-sm">
           <div className="card-body">
             <h2 className="card-title justify-center mb-5">Edit Profile</h2>
             <fieldset className="fieldset flex justify-center">
@@ -92,18 +109,30 @@ const EditProfile = ({ user }) => {
             </fieldset>
             <fieldset className="fieldset flex justify-center">
               <legend className="fieldset-legend ml-6.5">Gender</legend>
-              <input
-                type="text"
+              <select
                 className="input"
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
+              >
+                <option value="">Select</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="others">others</option>
+              </select>
+            </fieldset>
+            <fieldset className="fieldset flex justify-center">
+              <legend className="fieldset-legend ml-6.5">Skills</legend>
+              <input
+                type="text"
+                className="input"
+                value={skills}
+                onChange={(e) => setSkills(e.target.value)}
+                placeholder="Enter skills separated by commas (e.g., React, Node.js, Python)"
               />
             </fieldset>
-
-            {/* <p className='text-red-500 text-sm mt-1 mb-1 min-h-[1.25rem]'>{error}</p> */}
             <div className="card-actions justify-center">
               <button
-                className="btn btn-neutral-content text-primary hover:btn-primary hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95"
+                className="btn btn-enhanced text-primary hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95 mt-2"
                 onClick={saveProfile}
               >
                 Proceed
@@ -113,29 +142,38 @@ const EditProfile = ({ user }) => {
         </div>
       </div>
       <div className="mt-12">
+        
         <UserCard
           user={{
+            _id: "preview", 
             firstName,
             lastName,
             about,
             age,
             gender,
             profileURL,
+            skills: skills
+              .split(",")
+              .map((skill) => skill.trim())
+              .filter((skill) => skill.length > 0),
           }}
         />
       </div>
-     <div className="toast toast-top toast-center">
-       {showToast &&  <div className="alert alert-success">
-          <span>Profile edited successfully</span>
-        </div>}
-        {error && <div className="alert alert-error">
-          <span>{error}</span>
-        </div>}
+      <div className="toast toast-top toast-center fixed">
+        {showToast && (
+          <div className="alert alert-success">
+            <span>Profile edited successfully</span>
+          </div>
+        )}
+        {error && (
+          <div className="alert alert-error">
+            <span>{error}</span>
+                 {console.log(error)}
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default EditProfile;
-
-

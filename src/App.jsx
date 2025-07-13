@@ -13,19 +13,21 @@ import ForgetPassword from "./components/ForgetPassword";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#121212] text-white">
+    <div className="min-h-screen global-bg text-white">
       <Provider store = {store}>
         <BrowserRouter basename="/">
+        <Routes>
+           <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup/>} />
+            <Route path="/password/reset" element={<ForgetPassword/>} />
+        </Routes>
           <Routes>
             <Route path="/" element={<Body />}>
               <Route index element={<Feed />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup/>} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />
               <Route path="/chat/:otherUserId" element={<Chat/>} />
-              <Route path="/password/reset" element={<ForgetPassword/>} />
             </Route>
           </Routes>
         </BrowserRouter>

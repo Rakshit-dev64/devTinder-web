@@ -6,6 +6,7 @@ import { addConnection } from "../utils/connectionSlice";
 import UserCard from "./UserCard";
 import { UFO } from "./Illustrations";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
@@ -29,21 +30,26 @@ const Connections = () => {
   if (!connections) return null;
   if (connections.length === 0)
     return (
-      <div className="flex justify-center items-center flex-col mt-14 gap-14">
-        <h1 className="text-4xl font-bold">No connections found</h1>
+      <div className="flex justify-center items-center flex-col mt-14 gap-14 animate-fadeIn">
+        <h1 className="text-4xl font-bold">
+          No connections found
+        </h1>
         <div>
           <UFO />
         </div>
       </div>
     );
   return (
-    <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide">
-      <h1 className="text-2xl font-bold mb-6">Connections</h1>
-      <ul className="bg-[#000] rounded-box shadow-md w-full max-w-3xl">
-        {connections.map((user) => (
-          <li
+    <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide animate-fadeIn">
+      <h1 className="text-2xl font-bold mb-6">
+        Connections
+      </h1>
+      <div className="w-full max-w-3xl space-y-4">
+        {connections.map((user, index) => (
+          <motion.div
             key={user._id}
-            className="list-row border-b border-base-200 p-4 hover:bg-neutral-950 transition h-36 pl-10 pt-8"
+            className="list-item-modern p-6 transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
           >
             <div className="flex items-center gap-4">
               <img
@@ -63,8 +69,8 @@ const Connections = () => {
                 <div className="text-sm opacity-70">{user.about || " "}</div>
                 <div className="text-xs opacity-70">
                   {user.skills && user.skills.length > 0
-                    ? user.skills.map((skill, index) => (
-                        <span key={index} className="mr-2 py-1">
+                    ? user.skills.map((skill, skillIndex) => (
+                        <span key={skillIndex} className="mr-2 py-1 px-2 bg-white/10 rounded-full inline-block mb-1">
                           {skill}
                         </span>
                       ))
@@ -72,14 +78,18 @@ const Connections = () => {
                 </div>
               </div>
               <Link to={"/chat/" + user._id}>
-                <button className="btn btn-neutral-content text-green-500 hover:bg-green-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95 mr-6">
+                <motion.button 
+                  className="btn btn-enhanced !text-green-500 mr-6"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   Message
-                </button>
+                </motion.button>
               </Link>
             </div>
-          </li>
+          </motion.div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import noUsersFound from '../assets/noUsersFound.svg'
 import teamWork from '../assets/teamWork.svg'
 import requests from '../assets/requests.svg'
+import Login from '../assets/Login.svg'
 
 export const TouchGrass = () => {
   return (
@@ -22,6 +23,13 @@ export const RequestsImg = () => {
     <div className='w-lg'>
         <img src={requests} />
     </div>
+  )
+}
+export const LoginIllustration = () => {
+  return(
+  <div className='w-4xl'>
+    <img src={Login}/>
+  </div>
   )
 }
 

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import BASE_URL from '../utils/constants';
-import art from '../assets/art.png';
+import { LoginIllustration } from "./Illustrations";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -85,8 +85,8 @@ const Signup = () => {
        </div>
      </div>
      <div className="flex items-center justify-center">
-     <img src={art} alt="Login Illustration" className="block h-[100%]" />
-   </div>
+       <LoginIllustration />
+     </div>
    <div className="toast toast-top toast-center">
         {error && <div className="alert alert-error">
           <span>{error}</span>

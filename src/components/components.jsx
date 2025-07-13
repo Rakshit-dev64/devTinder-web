@@ -24,7 +24,7 @@ export const NavBar = () => {
     
   }
   return (
-      <div className="navbar  bg-[#000] text-white shadow-sm">
+      <div className="navbar navbar-modern text-white shadow-sm">
   <div className="flex-1">
     <Link to={user ? "/" : "/login"} className="btn btn-ghost text-xl bg-neutral-content text-neutral ml-4">DevLink</Link>
   </div>
@@ -33,7 +33,7 @@ export const NavBar = () => {
     <>
       <h1 className="mt-2">Welcome {user.firstName}</h1>
 
-      <div className="dropdown dropdown-end mx-6" key={user.emailId}>
+      <div className="dropdown dropdown-end mx-6 bg-rgba(23, 23, 23, 0.95)" key={user.emailId}>
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img alt="Tailwind CSS Navbar component" src={user.profileURL} />
@@ -42,7 +42,7 @@ export const NavBar = () => {
 
         <ul
           tabIndex={0}
-          className="menu dropdown-content bg-neutral rounded-box z-1 mt-3 w-48 p-2 shadow"
+          className="menu dropdown-content rounded-b-lg z-1 mt-3 w-48 p-2 shadow bg-[rgba(23,23,23,0.95)]"
         >
           <li>
             <Link to={"/profile"} className="justify-between">
@@ -64,28 +64,17 @@ export const NavBar = () => {
   )
 }
 
-export const InputField = ({value, onChange, placeholder, type}) => {
+export const InputField = ({value, onChange, placeholder, type, onKeyDown}) => {
   return(
     <>
     <label className="input mt-5">
-  {/* <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      strokeWidth="2.5"
-      fill="none"
-      stroke="currentColor"
-    >
-      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-      <circle cx="12" cy="7" r="4"></circle>
-    </g>
-  </svg> */}
   <input
     type={type} 
     placeholder={placeholder}
     required
     value={value}
     onChange={onChange}
+    onKeyDown={onKeyDown}
     />
 </label>
 </>

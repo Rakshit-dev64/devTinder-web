@@ -6,7 +6,8 @@ import { removeUserFromFeed } from "../utils/feedSlice";
 
 const UserCard = ({ user }) => {
   if (!user) return;
-  const { _id, firstName, lastName, about, profileURL, age, gender, skills } = user;
+  const { _id, firstName, lastName, about, profileURL, age, gender, skills } =
+    user;
   const dispatch = useDispatch();
   const [showFullAbout, setShowFullAbout] = useState(false);
   const sendRequest = async (status, _id) => {
@@ -31,7 +32,7 @@ const UserCard = ({ user }) => {
 
   return (
     user && (
-      <div className="relative w-96 h-[600px] rounded-xl overflow-hidden shadow-2xl shadow-black">
+      <div className="relative w-96 h-[600px] rounded-xl overflow-hidden shadow-2xl shadow-black transition-all duration-500 ease-out transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-900/30">
         <img
           src={profileURL}
           alt="pfp"
@@ -57,19 +58,22 @@ const UserCard = ({ user }) => {
               </button>
             )}
           </p>
-          <div className="text-xs opacity-70">
-            {skills && skills.length > 0
-              ? skills.map((skill, index) => (
-                  <span key={index} className="mr-2 py-1">
-                    {skill}
-                  </span>
-                ))
-              : " "}
-          </div>
+          {skills && skills.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {skills.map((skill, index) => (
+                <span
+                  key={index}
+                  className="inline-block px-3 py-1 text-xs bg-white/20 text-white rounded-full shadow-sm"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
 
           <div className="flex justify-center mt-4 gap-4">
             <button
-              className="btn btn-neutral-content text-red-500 hover:bg-red-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95 mx-2"
+              className="btn btn-enhanced  !text-red-500 mx-2 px-6 hover:scale-105"
               onClick={() => {
                 sendRequest("ignored", _id);
               }}
@@ -77,7 +81,7 @@ const UserCard = ({ user }) => {
               Ignore
             </button>
             <button
-              className="btn btn-neutral-content text-blue-500 hover:bg-blue-500 hover:text-neutral-content transition-all duration-300 transform hover:scale-105 focus:scale-95"
+              className="btn btn-enhanced  !text-blue-500 px-4 hover:scale-105"
               onClick={() => {
                 sendRequest("interested", _id);
               }}

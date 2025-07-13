@@ -3,7 +3,7 @@ import axios from "axios";
 import { InputField } from "./components";
 import { Link, useNavigate } from "react-router-dom";
 import BASE_URL from "../utils/constants";
-import art from "../assets/art.png";
+import { LoginIllustration } from "./Illustrations";
 
 const ForgetPassword = () => {
   const [emailId, setEmailId] = useState("");
@@ -138,7 +138,7 @@ const ForgetPassword = () => {
       </div>
       
       <div className="flex items-center justify-center">
-        <img src={art} alt="Password Reset Illustration" className="block h-[100%]" />
+        <LoginIllustration />
       </div>
       
       <div className="toast toast-top toast-center">
