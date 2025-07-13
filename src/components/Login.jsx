@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import BASE_URL from "../utils/constants";
-import art from "../assets/art.png";
 import { LoginIllustration } from "./Illustrations";
 
 const Login = () => {
