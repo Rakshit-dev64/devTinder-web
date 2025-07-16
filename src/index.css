@@ -32,8 +32,6 @@ html {
 
 /* Modern background with subtle pattern */
 body {
-  background: var(--bg-primary);
-  background-attachment: fixed;
   position: relative;
   color: var(--text-primary);
 }
@@ -278,6 +276,36 @@ body::before {
   background: rgba(23, 23, 23, 0.95);
   backdrop-filter: blur(20px);
   box-shadow: 0 4px 6px rgba(23, 23, 23, 0.4);
+  position: relative;
+  z-index: 1000;
+}
+
+/* Dropdown menu override */
+.dropdown-content {
+  z-index: 9999 !important;
+  position: absolute !important;
+}
+
+/* Ensure main content has lower z-index */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Specific DaisyUI dropdown fix */
+.dropdown.dropdown-end .dropdown-content {
+  z-index: 9999 !important;
+  position: absolute !important;
+  right: 0;
+}
+
+/* Additional z-index fixes */
+.navbar {
+  z-index: 1000 !important;
+}
+
+.dropdown {
+  z-index: 9999 !important;
 }
 
 /* Modern list items */

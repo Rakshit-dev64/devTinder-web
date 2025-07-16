@@ -31,14 +31,14 @@ const Login = () => {
     }
   };
   return (
-       <div className="bg-black flex items-center h-screen overflow-hidden w-screen pt-10 gap-x-16 page-transition">
-      <div className="flex flex-col justify-between pl-52 animate-slideInUp">
-        <div className="border border-white w-fit p-6 text-6xl font-bold bg-neutral-content text-neutral mb-8 list-item-modern">
+       <div className="bg-black flex flex-col lg:flex-row items-center h-screen overflow-hidden w-screen pt-4 lg:pt-10 gap-8 lg:gap-x-16 page-transition px-4">
+      <div className="flex flex-col justify-center lg:justify-between lg:pl-52 animate-slideInUp w-full lg:w-auto mt-50 lg:mt-0">
+        <div className="border border-white w-fit p-4 lg:p-6 text-3xl lg:text-6xl font-bold bg-neutral-content text-neutral mb-4 lg:mb-8 list-item-modern mx-auto lg:mx-0">
           DevLink
         </div>
-        <div className="max-w-md text-white">
-          <h1 className="text-5xl font-bold mb-4 mt-4">Login to your account</h1>
-          <div className="card bg-black shadow-none">
+        <div className="max-w-md text-white w-full">
+          <h1 className="text-2xl lg:text-5xl font-bold mb-4 mt-4 text-center lg:text-left">Login to your account</h1>
+          <div className="card bg-black shadow-none lg:justify-center items-center">
             <div className="card-body p-0">
               <fieldset className="space-y-4">
                 <div>
@@ -64,7 +64,7 @@ const Login = () => {
                 </Link>
               </div>
               <button
-                className="mt-4 w-80 btn btn-ghost text-xl bg-neutral-content text-neutral"
+                className="input mt-5 w-80 text-xl bg-neutral-content flex justify-center text-neutral border-0 cursor-pointer hover:bg-neutral-content/92 transition-colors "
                 onClick={handleLogin}
               >
                 Login
@@ -85,7 +85,7 @@ const Login = () => {
         </div>
       </div>
       </div>
-      <div className="flex items-center justify-center mb-24 animate-slideInUp">
+      <div className="hidden lg:flex items-center justify-center mb-8 lg:mb-24 animate-slideInUp order-first lg:order-last">
         <LoginIllustration />
       </div>
       <div className="toast toast-top toast-center">

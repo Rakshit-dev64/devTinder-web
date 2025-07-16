@@ -55,9 +55,9 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="flex justify-center gap-8 mt-8 mb-20 animate-fadeIn">
-      <div className="flex justify-center card-xl">
-        <div className="card card-modern w-md shadow-sm">
+    <div className="flex flex-col lg:flex-row justify-center gap-8 mt-8 mb-20 animate-fadeIn px-4">
+      <div className="flex justify-center card-xl w-full lg:w-auto">
+        <div className="card card-modern w-md max-w-md lg:max-w-xl xl:max-w-2xl shadow-sm">
           <div className="card-body">
             <h2 className="card-title justify-center mb-5">Edit Profile</h2>
             <fieldset className="fieldset flex justify-center">
@@ -141,7 +141,7 @@ const EditProfile = ({ user }) => {
           </div>
         </div>
       </div>
-      <div className="mt-12">
+      <div className="mt-8 lg:mt-12 flex justify-center">
         
         <UserCard
           user={{

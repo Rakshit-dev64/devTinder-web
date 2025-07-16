@@ -30,35 +30,47 @@ const Connections = () => {
   if (!connections) return null;
   if (connections.length === 0)
     return (
-      <div className="flex justify-center items-center flex-col mt-14 gap-14 animate-fadeIn">
-        <h1 className="text-4xl font-bold">
+      <div className="flex justify-center items-center flex-col mt-20 sm:mt-14 gap-8 sm:gap-14 animate-fadeIn px-4 min-h-[60vh] lg:mt-8">
+        <h1 className="text-2xl sm:text-4xl font-bold text-center">
           No connections found
         </h1>
-        <div>
+        <div className='flex justify-center'>
           <UFO />
         </div>
       </div>
     );
   return (
-    <div className="flex flex-col items-center mt-8 px-4 text-white font-medium tracking-wide animate-fadeIn">
-      <h1 className="text-2xl font-bold mb-6">
+    <div className="flex flex-col items-center mt-6 sm:mt-8 px-4 text-white font-medium tracking-wide animate-fadeIn">
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">
         Connections
       </h1>
-      <div className="w-full max-w-3xl space-y-4">
+      <div className="w-full max-w-4xl space-y-3 sm:space-y-4">
         {connections.map((user, index) => (
           <motion.div
             key={user._id}
-            className="list-item-modern p-6 transition-all duration-300"
+            className="list-item-modern p-4 sm:p-6 transition-all duration-300"
             whileHover={{ scale: 1.02 }}
           >
-            <div className="flex items-center gap-4">
-              <img
-                src={user.profileURL}
-                alt="pfp"
-                className="w-20 h-20 rounded-full object-cover shadow-md"
-              />
-              <div className="flex-1">
-                <div className="flex gap-1.5">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+              <div className="flex sm:block items-center gap-3 sm:gap-0 w-full sm:w-auto">
+                <img
+                  src={user.profileURL}
+                  alt="pfp"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shadow-md flex-shrink-0"
+                />
+                <div className="sm:hidden flex-1">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold text-base">
+                      {user.firstName} {user.lastName}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {user.age} • {user.gender}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1 w-full sm:w-auto">
+                <div className="hidden sm:flex gap-1.5">
                   <div className="font-semibold text-base">
                     {user.firstName} {user.lastName}
                   </div>
@@ -66,26 +78,28 @@ const Connections = () => {
                     {user.age} • {user.gender}
                   </div>
                 </div>
-                <div className="text-sm opacity-70">{user.about || " "}</div>
-                <div className="text-xs opacity-70">
+                <div className="text-sm opacity-70 mt-1 sm:mt-0">{user.about || " "}</div>
+                <div className="text-xs opacity-70 mt-2">
                   {user.skills && user.skills.length > 0
                     ? user.skills.map((skill, skillIndex) => (
-                        <span key={skillIndex} className="mr-2 py-1 px-2 bg-white/10 rounded-full inline-block mb-1">
+                        <span key={skillIndex} className="mr-1 sm:mr-2 py-1 px-2 bg-white/10 rounded-full inline-block mb-1 text-xs">
                           {skill}
                         </span>
                       ))
                     : " "}
                 </div>
               </div>
-              <Link to={"/chat/" + user._id}>
-                <motion.button 
-                  className="btn btn-enhanced !text-green-500 mr-6"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Message
-                </motion.button>
-              </Link>
+              <div className="flex justify-end sm:justify-start mt-3 sm:mt-0">
+                <Link to={"/chat/" + user._id}>
+                  <motion.button 
+                    className="btn btn-enhanced !text-green-500 btn-sm sm:btn-md"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Message
+                  </motion.button>
+                </Link>
+              </div>
             </div>
           </motion.div>
         ))}

@@ -32,7 +32,7 @@ const UserCard = ({ user }) => {
 
   return (
     user && (
-      <div className="relative w-96 h-[600px] rounded-xl overflow-hidden shadow-2xl shadow-black transition-all duration-500 ease-out transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-900/30">
+      <div className="relative w-full max-w-sm mx-auto h-[600px] sm:h-[600px] rounded-xl overflow-hidden shadow-2xl shadow-black transition-all duration-500 ease-out transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-900/30">
         <img
           src={profileURL}
           alt="pfp"
