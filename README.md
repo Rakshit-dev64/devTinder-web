@@ -4,6 +4,11 @@ A Tinder-style networking platform for developers, built with the MERN stack. Us
 
 🔗 **Live Demo:** [https://devtinder-web-xiqj.onrender.com]
 
+> 🧪 Test Account (for demo purposes only)
+> Email: mark@gmail.com  
+> Password: Mark@998
+
+
 ---
 
 ## 🚀 Features
@@ -35,7 +40,8 @@ A Tinder-style networking platform for developers, built with the MERN stack. Us
 
 ---
 
-🏗️ Installation & Setup
+## 🏗️ Installation & Setup
+
 Clone the repository:
 <pre> git clone https://github.com/Rakshit-dev64/devTinder-api.git </pre>
 Navigate to the project directory:
