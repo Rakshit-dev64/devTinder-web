@@ -1,12 +1,46 @@
-# React + Vite
+# DevTinder (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Tinder-style networking platform for developers, built with the MERN stack. Users can connect by showing interest in each other's profiles, send/receive requests, and chat live in real-time.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [https://devtinder-web-xiqj.onrender.com]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 Secure authentication with JWT & bcrypt
+- 🧑‍💻 Profile creation with avatar, skills, and bio
+- 🤝 Connection system (interested/ignore)
+- 💬 Real-time chat using **Socket.io**
+- 🧭 Smooth page transitions and animations with **Framer Motion**
+- 🎨 TailwindCSS UI with glassmorphism effects
+- 🌐 Fully responsive and mobile-friendly
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend:**
+- React
+- Redux Toolkit
+- TailwindCSS + DaisyUI
+- Framer Motion
+
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT Auth + Bcrypt
+- Socket.io
+
+---
+
+🏗️ Installation & Setup
+Clone the repository:
+<pre> git clone https://github.com/Rakshit-dev64/devTinder-api.git </pre>
+Navigate to the project directory:
+<pre> cd devTinder-api </pre>
+Install dependencies:
+<pre> npm install </pre>
+Start the development server:
+<pre> npm run dev </pre>
