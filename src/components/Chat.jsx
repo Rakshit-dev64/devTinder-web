@@ -22,7 +22,7 @@ const Chat = () => {
         firstName: msg?.senderId?.firstName,
         profileURL: msg?.senderId?.profileURL,
         text: msg?.text,
-      };
+      };  
     });
     setMessages(chatMessages);
   };

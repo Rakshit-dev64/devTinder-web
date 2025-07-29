@@ -1,8 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* Previous theme variables */
-:root {
+/* :root {
   --primary-gradient: linear-gradient(135deg, #da0037 0%, #ededed 100%);
   --secondary-gradient: #444444;
   --accent-gradient: #da0037;
@@ -23,7 +22,7 @@
     #0a0a0a 100%
   );
   --bg-secondary: #444444;
-}
+} */
 
 /* Smooth scrolling for the entire page */
 html {
@@ -31,36 +30,12 @@ html {
 }
 
 /* Modern background with subtle pattern */
-body {
+/* body {
   position: relative;
   color: var(--text-primary);
-}
+} */
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(
-      circle at 20% 50%,
-      rgba(45, 27, 46, 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(218, 0, 55, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 80%,
-      rgba(26, 26, 26, 0.4) 0%,
-      transparent 50%
-    );
-  pointer-events: none;
-  z-index: -1;
-}
+/* Removed extra background gradient to clean up the UI */
 
 /* Custom animations for chat */
 @keyframes fadeIn {
@@ -347,4 +322,55 @@ background: linear-gradient(
   rgba(63, 63, 63, 0.85) 60%,
   rgba(103, 102, 102, 0.8) 100%
 );
+}
+
+/* Advanced navbar animations */
+@keyframes navItemHover {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.05);
+  }
+  100% {
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes navItemClick {
+  0% {
+    transform: scale(1.03);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.navbar-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.navbar-item:hover::before {
+  left: 100%;
+}
+
+.navbar-item:active {
+  animation: navItemClick 0.2s ease-in-out;
 }
