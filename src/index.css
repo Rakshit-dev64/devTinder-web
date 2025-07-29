@@ -1,6 +1,23 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Ensure full width layout and remove any default margins/padding */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
 /* :root {
   --primary-gradient: linear-gradient(135deg, #da0037 0%, #ededed 100%);
   --secondary-gradient: #444444;

@@ -30,7 +30,7 @@ const Connections = () => {
   if (!connections) return null;
   if (connections.length === 0)
     return (
-      <div className="flex justify-center items-center flex-col mt-20 sm:mt-14 gap-8 sm:gap-14 animate-fadeIn px-4 min-h-[60vh] lg:mt-8">
+      <div className="flex justify-center items-center flex-col gap-8 sm:gap-14 animate-fadeIn px-4 min-h-[calc(100vh-64px)]">
         <h1 className="text-2xl sm:text-4xl font-bold text-center">
           No connections found
         </h1>
@@ -40,7 +40,7 @@ const Connections = () => {
       </div>
     );
   return (
-    <div className="flex flex-col items-center mt-6 sm:mt-8 px-4 text-white font-medium tracking-wide animate-fadeIn">
+    <div className="w-full flex flex-col items-center px-4 py-4 text-white font-medium tracking-wide animate-fadeIn min-h-[calc(100vh-64px)]">
       <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">
         Connections
       </h1>
